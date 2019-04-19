@@ -1,0 +1,3 @@
+node_modules
+my-tapes/*
+!my-tapes/.gitkeep
