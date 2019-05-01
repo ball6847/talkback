@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import talkback from "talkback"
 import { argv } from "yargs"
 import { readOptions } from "./lib/readOptions"

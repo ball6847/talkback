@@ -12,27 +12,26 @@
   },
   "scripts": {
     "start": "ts-node --files src/main.ts --host https://jsonplaceholder.typicode.com",
-    "build": "npm run lint && webpack-cli --mode production --progress",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "lint": "tslint --project tsconfig.json"
   },
   "keywords": [],
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
+    "shorthash": "0.0.2",
+    "talkback": "^1.11.0",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {
     "@types/node": "^11.13.8",
     "@types/webpack": "^4.4.29",
     "@types/yargs": "^13.0.0",
     "husky": "^2.1.0",
     "lint-staged": "^8.1.5",
-    "shorthash": "0.0.2",
-    "talkback": "^1.11.0",
-    "ts-loader": "^5.4.5",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1",
-    "yargs": "^13.2.2"
+    "typescript": "^3.4.5"
   },
   "husky": {
     "hooks": {
