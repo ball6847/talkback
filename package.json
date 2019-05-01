@@ -1,21 +1,49 @@
 {
-  "name": "irpc-talkback",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@ball6847/talkback-cli",
+  "version": "0.0.1",
+  "description": "An opinionated talkback cli",
+  "author": "Porawit Poboonma",
+  "main": "dist/main.js",
+  "bin": {
+    "talkback": "./dist/main.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "start": "ts-node --files src/main.ts"
+    "start": "ts-node --files src/main.ts --host https://jsonplaceholder.typicode.com",
+    "build": "npm run lint && webpack-cli --mode production --progress",
+    "lint": "tslint --project tsconfig.json"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@sindresorhus/slugify": "^0.9.1",
-    "shorthash": "0.0.2",
-    "talkback": "^1.10.0"
-  },
   "devDependencies": {
+    "@sindresorhus/slugify": "^0.9.1",
+    "@types/node": "^11.13.8",
+    "@types/webpack": "^4.4.29",
+    "@types/yargs": "^13.0.0",
+    "husky": "^2.1.0",
+    "lint-staged": "^8.1.5",
+    "shorthash": "0.0.2",
+    "talkback": "^1.11.0",
+    "ts-loader": "^5.4.5",
     "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "yargs": "^13.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "tslint --project tsconfig.json",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

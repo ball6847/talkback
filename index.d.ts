@@ -1,2 +1,2 @@
-declare module 'talkback';
-declare module 'shorthash';
+declare module "talkback"
+declare module "shorthash"

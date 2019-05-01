@@ -1,17 +1,23 @@
-import talkback from 'talkback';
-import { tapeNameGenerator } from './libs/tapeNameGenerator';
+import talkback from "talkback"
+import { argv } from "yargs"
+import { readOptions } from "./lib/readOptions"
+import { requestDecorator } from "./lib/requestDecorator"
+import { createTapeNameGenerator } from "./lib/tapeNameGenerator"
 
-// TODO: ignore accept gzip header (need modification to 3rdparty module)
-// TODO: ability to specify host at runtime
-// TODO: ability to specify RecordMode at runtime
+const args = readOptions(argv)
+const tapeNameGenerator = createTapeNameGenerator(args)
 
 const opts = {
-  host: 'https://irpc-web-dashboard-dev.azurewebsites.net',
-  record: talkback.Options.RecordMode.NEW,
-  port: 5544,
-  path: './my-tapes',
+  host: args.host,
+  port: args.port,
+  path: args.path,
+  record: args.mode,
   tapeNameGenerator,
-  ignoreHeaders: ['authorization']
-};
-const server = talkback(opts);
-server.start(() => console.log('Talkback Started'));
+  requestDecorator,
+  ignoreHeaders: ["authorization"],
+}
+const server = talkback(opts)
+server.start(() => {
+  // tslint:disable-next-line: no-console
+  console.log("Talkback Started")
+})
