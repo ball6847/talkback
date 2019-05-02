@@ -4,7 +4,7 @@ import { URL } from "url"
 import { ICommandOpts } from "./readOptions"
 
 const removePrefix = (str: string, prefix?: string) =>
-  prefix && str.startsWith(prefix) ? str.substring(0, prefix.length) : str
+  prefix && str.startsWith(prefix) ? str.substring(prefix.length) : str
 
 export const createTapeNameGenerator = (opts: ICommandOpts) => (tapeNumber: number, tape: any) => {
   const url = new URL(tape.req.url, tape.options.host)

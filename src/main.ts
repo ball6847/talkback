@@ -15,7 +15,17 @@ const opts = {
   record: args.mode,
   tapeNameGenerator,
   requestDecorator,
-  ignoreHeaders: ["authorization"],
+  ignoreHeaders: [
+    "authorization",
+    "referer",
+    "cookie",
+    "user-agent",
+    "proxy-connection",
+    "accept-language",
+    "accept",
+    "connection",
+    "x-devtools-request-id",
+  ],
 }
 const server = talkback(opts)
 server.start(() => {
