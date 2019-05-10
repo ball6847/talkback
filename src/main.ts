@@ -25,6 +25,7 @@ const opts = {
     "accept",
     "connection",
     "x-devtools-request-id",
+    "pragma",
   ],
 }
 const server = talkback(opts)

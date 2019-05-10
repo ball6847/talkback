@@ -10,6 +10,6 @@ export const createTapeNameGenerator = (opts: ICommandOpts) => (tapeNumber: numb
   const url = new URL(tape.req.url, tape.options.host)
   const scenario = slugify(tape.req.headers["x-scenario-id"] || "unknown-scenario")
   const path = slugify(removePrefix(url.pathname, opts.prefix))
-  const filename = unique(tape.req.url)
+  const filename = unique(tape.req.url + tape.req.method + JSON.stringify(tape.req.body))
   return `${scenario}/${path}/${filename}`
 }
